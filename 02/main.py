@@ -19,6 +19,8 @@ def get_three_digits():
     num = 0
     while not (99 < num < 1000):
         num = input_integer("Пожалуйста, введите трёхзначное число: ")
+        if not (99 < num < 1000):
+            print("Число должно быть трёхзначным! Повторите ввод: ")
     return num
 
 
