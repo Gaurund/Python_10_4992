@@ -39,13 +39,13 @@ def summarize_digits(num):
 def output():
     ticket = get_six_digits()
     first_half = ticket // 1000
-    second_half = ticket - first_half*1000
+    second_half = ticket % 1000
     first_half_sum = summarize_digits(first_half)
     second_half_sum = summarize_digits(second_half)
     if first_half_sum == second_half_sum:
-        print("%d -> Да" % (ticket))
+        print("%d -> Да" % ticket)
     else:
-        print("%d -> Нет" % (ticket))
+        print("%d -> Нет" % ticket)
 
 
 output()
