@@ -18,6 +18,13 @@ def input_integer(msg):
         return input_integer("Необходимо ввести целое число. Повторите ввод: ")
 
 
+def get_number(invite_msg, error_msg):
+    num = input_integer(invite_msg)
+    while num < 1:
+        print(error_msg)
+        num = input_integer(invite_msg)
+    return num
+
 def search_cross(sum, prod):
     for i in range(1001):
         for j in range(1001):
@@ -27,8 +34,8 @@ def search_cross(sum, prod):
 
 
 def output():
-    sum = input_integer("Чему равна сумма двух чисел? ")
-    prod = input_integer("Чему равно их произведение? ")
+    sum = get_number("Чему равна сумма двух чисел? ", "По условию число должно быть положительным. ")
+    prod = get_number("Чему равно их произведение? ", "По условию число должно быть положительным. ")
     result = search_cross(sum, prod)
     print(sum, prod, "->", result)
 

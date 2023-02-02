@@ -5,7 +5,7 @@
 10 -> 1 2 4 8
 
 '''
-
+import math
 
 def input_integer(msg):
     num = input(msg)
@@ -24,12 +24,10 @@ def get_number(invite_msg, error_msg):
 
 
 def create_list_power_of_two(num):
-    power = 0
-    TWO = 2
+    size = math.floor(math.log(num,2))
     power_of_two_list = []
-    while num > TWO**power:
-        power_of_two_list.append(TWO**power)
-        power += 1
+    for i in range(size+1):
+        power_of_two_list.append(2**i)
     return power_of_two_list
 
 

@@ -46,9 +46,7 @@ def count_head_tails(coins_list):
 
 def output():
     coins = get_number("Введите количество монеток: ", "Число не может быть отрицательным!")
-    HEAD = 0
-    TAIL = 1
-    coins_list = create_random_list(coins, HEAD, TAIL)
+    coins_list = create_random_list(coins, 0, 1)
     flips = count_head_tails(coins_list)
     print("%d монет -> " % coins, *coins_list)
     print("Потребуется %d переворота(ов)." % flips)
