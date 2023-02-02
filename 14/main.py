@@ -7,6 +7,7 @@
 '''
 import math
 
+
 def input_integer(msg):
     num = input(msg)
     try:
@@ -23,8 +24,8 @@ def get_number(invite_msg, error_msg):
     return num
 
 
-def create_list_power_of_two(num):
-    size = math.floor(math.log(num,2))
+def create_power_of_two_list(num):
+    size = math.floor(math.log(num, 2))
     power_of_two_list = []
     for i in range(size+1):
         power_of_two_list.append(2**i)
@@ -32,9 +33,10 @@ def create_list_power_of_two(num):
 
 
 def output():
-    num = get_number("Введите целое неотрицательное число: ", "Число не может быть отрицательным!")
-    power_of_two_list = create_list_power_of_two(num)
-    print(num,"->",*power_of_two_list)
+    num = get_number("Введите целое неотрицательное число: ",
+                     "Число не может быть отрицательным!")
+    power_of_two_list = create_power_of_two_list(num)
+    print(num, "->", *power_of_two_list)
 
 
 output()

@@ -33,21 +33,21 @@ def create_random_list(size, low, high):
     return random_list
 
 
-def count_head_tails(coins_list):
+def count_min_flips(coins_list):
     size = len(coins_list)
-    count = 0
+    flips = 0
     for i in range(size):
         if coins_list[i] == 0:
-            count += 1
-    if size // 2 < count:
-        count = size - count
-    return count
+            flips += 1
+    if size // 2 < flips:
+        flips = size - flips
+    return flips
 
 
 def output():
     coins = get_number("Введите количество монеток: ", "Число не может быть отрицательным!")
     coins_list = create_random_list(coins, 0, 1)
-    flips = count_head_tails(coins_list)
+    flips = count_min_flips(coins_list)
     print("%d монет -> " % coins, *coins_list)
     print("Потребуется %d переворота(ов)." % flips)
 
