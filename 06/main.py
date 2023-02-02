@@ -31,8 +31,8 @@ def get_six_digits():
 def summarize_digits(num):
     total = 0
     while num != 0:
-        total = total + num % 10
-        num = num // 10
+        total += num % 10
+        num //= 10
     return total
 
 
