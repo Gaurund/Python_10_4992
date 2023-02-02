@@ -18,11 +18,11 @@ def input_integer(msg):
         return input_integer("Необходимо ввести целое число. Повторите ввод: ")
 
 
-def get_number():
-    num = input_integer("Введите количество монеток: ")
+def get_number(invite_msg, error_msg):
+    num = input_integer(invite_msg)
     while num < 1:
-        print("Число не может быть отрицательным!")
-        num = input_integer("Введите целое неотрицательное число: ")
+        print(error_msg)
+        num = input_integer(invite_msg)
     return num
 
 
@@ -45,10 +45,10 @@ def count_head_tails(coins_list):
 
 
 def output():
-    coins = get_number()
-    head = 0
-    tail = 1
-    coins_list = create_random_list(coins, head, tail)
+    coins = get_number("Введите количество монеток: ", "Число не может быть отрицательным!")
+    HEAD = 0
+    TAIL = 1
+    coins_list = create_random_list(coins, HEAD, TAIL)
     flips = count_head_tails(coins_list)
     print("%d монет -> " % coins, *coins_list)
     print("Потребуется %d переворота(ов)." % flips)

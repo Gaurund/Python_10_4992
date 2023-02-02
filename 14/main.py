@@ -15,11 +15,11 @@ def input_integer(msg):
         return input_integer("Необходимо ввести целое число. Повторите ввод: ")
 
 
-def get_number():
-    num = input_integer("Введите целое неотрицательное число: ")
+def get_number(invite_msg, error_msg):
+    num = input_integer(invite_msg)
     while num < 1:
-        print("Число не может быть отрицательным!")
-        num = input_integer("Введите целое неотрицательное число: ")
+        print(error_msg)
+        num = input_integer(invite_msg)
     return num
 
 
@@ -34,7 +34,7 @@ def create_list_power_of_two(num):
 
 
 def output():
-    num = get_number()
+    num = get_number("Введите целое неотрицательное число: ", "Число не может быть отрицательным!")
     power_of_two_list = create_list_power_of_two(num)
     print(num,"->",*power_of_two_list)
 
