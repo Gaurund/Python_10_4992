@@ -26,10 +26,7 @@ def get_number(invite_msg, error_msg):
 
 def create_power_of_two_list(num):
     size = math.floor(math.log(num, 2))
-    power_of_two_list = []
-    for i in range(size+1):
-        power_of_two_list.append(2**i)
-    return power_of_two_list
+    return [2**i for i in range(size+1)]
 
 
 def output():

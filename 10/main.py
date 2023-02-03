@@ -27,10 +27,7 @@ def get_number(invite_msg, error_msg):
 
 
 def create_random_list(size, low, high):
-    random_list = []
-    for i in range(size):
-        random_list.append(random.randint(low, high))
-    return random_list
+    return [(random.randint(low, high)) for i in range(size)]
 
 
 def count_min_flips(coins_list):
@@ -45,7 +42,8 @@ def count_min_flips(coins_list):
 
 
 def output():
-    coins = get_number("Введите количество монеток: ", "Число не может быть отрицательным!")
+    coins = get_number("Введите количество монеток: ",
+                       "Число не может быть отрицательным!")
     coins_list = create_random_list(coins, 0, 1)
     flips = count_min_flips(coins_list)
     print("%d монет -> " % coins, *coins_list)

@@ -25,19 +25,22 @@ def get_number(invite_msg, error_msg):
         num = input_integer(invite_msg)
     return num
 
-def search_cross(sum, prod):
-    for i in range(1001):
-        for j in range(1001):
-            if sum == i+j and prod == i*j:
+
+def search_cross(summ, prod):
+    for i in range(1, 1001):
+        for j in range(i, 1001):
+            if summ == i+j and prod == i*j:
                 return (i, j)
     return "С заданными условиями решения нет."
 
 
 def output():
-    sum = get_number("Чему равна сумма двух чисел? ", "По условию число должно быть положительным. ")
-    prod = get_number("Чему равно их произведение? ", "По условию число должно быть положительным. ")
-    result = search_cross(sum, prod)
-    print(sum, prod, "->", result)
+    summ = get_number("Чему равна сумма двух чисел? ",
+                      "По условию число должно быть положительным. ")
+    prod = get_number("Чему равно их произведение? ",
+                      "По условию число должно быть положительным. ")
+    result = search_cross(summ, prod)
+    print(summ, prod, "->", result)
 
 
 output()
