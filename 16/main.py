@@ -28,27 +28,15 @@ def get_number(invite_msg, error_msg):
     return num
 
 
-def create_random_list(size, low, high):
-    return [(random.randint(low, high)) for _ in range(size)]
-
-
-def count_entries(new_list, value):
-    # count = 0
-    # for i in new_list:
-    #     if value == i:
-    #         count += 1
-    # return count
-    return new_list.count(value)
-
 def output():
     size = get_number("Введите размер списка: ",
                       "Число не может быть отрицательным!")
     low = input_integer("Введите нижний предел значений элементов списка: ")
     high = input_integer("Введите верхний предел значений элементов списка: ")
-    new_list = create_random_list(size, low, high)
+    new_list = [(random.randint(low, high)) for _ in range(size)]
     print(new_list)
-    value = input_integer("Какое элементы вы желаете сосчитать? ")
-    count = count_entries(new_list, value)
+    value = input_integer("Какой элемент вы желаете сосчитать? ")
+    count = new_list.count(value)
     print(f"{value} в списке встречается {count} раз(а)")
 
 

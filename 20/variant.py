@@ -26,30 +26,12 @@
 '''
 
 
-def define_language(word):
-    alphabet = set('QWERTYUIOPASDFGHJKLZXCVBNM')
-    return not alphabet.isdisjoint(word.upper())
-
-
-def count_score(word, points_per_char):
-    count = 0
-    for char in word.upper():
-        for points in points_per_char.keys():
-            if char in points_per_char[points]:
-                count += points
-    return count
-
-
-def output():
-    word = input('Введите слово: ')
-    if define_language(word):
-        points_per_char = {1: 'AEIOULNSTR', 2: 'DG', 3: 'BCMP',
-                           4: 'FHVWY', 5: 'K', 8: 'JX', 10: 'QZ'}
-    else:
-        points_per_char = {1: 'АВЕИНОРСТ', 2: 'ДКЛМПУ', 3: 'БГЁЬЯ',
-                           4: 'ЙЫ', 5: 'ЖЗХЦЧ', 8: 'ШЭЮ', 10: 'ФЩЪ'}
-    score = count_score(word, points_per_char)
-    print(f"Слово \"{word}\" стоит {score} очков.")
-
-
-output()
+word = input('Введите слово: ')
+points_per_char = {1: 'AEIOULNSTRАВЕИНОРСТ', 2: 'DGДКЛМПУ', 3: 'BCMPБГЁЬЯ',
+                   4: 'FHVWYЙЫ', 5: 'KЖЗХЦЧ', 8: 'JXШЭЮ', 10: 'QZФЩЪ'}
+score = 0
+for char in word.upper():
+    for points in points_per_char.keys():
+        if char in points_per_char[points]:
+            score += points
+print(f"Слово \"{word}\" стоит {score} очков.")
