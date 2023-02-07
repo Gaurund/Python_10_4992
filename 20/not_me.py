@@ -1,4 +1,4 @@
-'''
+"""
 Задача 20: В настольной игре Скрабл (Scrabble) каждая буква имеет определенную
 ценность. В случае с английским алфавитом очки распределяются так:
 ● A, E, I, O, U, L, N, S, T, R – 1 очко;
@@ -23,16 +23,20 @@
 ноутбук
 Вывод:
 12
-'''
+"""
+values_letters = {1: {'A', 'E', 'I', 'O', 'U', 'L', 'N', 'S', 'T', 'R', 'А', 'В', 'Е', 'И', 'Н', 'О', 'Р', 'С', 'Т'},
+                  2: {'D', 'G', 'Д', 'К', 'Л', 'М', 'П', 'У'},
+                  3: {'B', 'C', 'M', 'P', 'Б', 'Г', 'Ё', 'Ь', 'Я'},
+                  4: {'F', 'H', 'V', 'W', 'Y', 'Й', 'Ы'},
+                  5: {'K', 'Ж', 'З', 'Х', 'Ц', 'Ч'},
+                  8: {'J', 'X', 'Ш', 'Э', 'Ю'},
+                  10:{'Q', 'Z', 'Ф', 'Щ', 'Ъ'}}
 
-
-word = input('Введите слово: ')
-points_per_char = {1: 'AEIOULNSTRАВЕИНОРСТ', 2: 'DGДКЛМПУ', 3: 'BCMPБГЁЬЯ',
-                   4: 'FHVWYЙЫ', 5: 'KЖЗХЦЧ', 8: 'JXШЭЮ', 10: 'QZФЩЪ'}
-score = 0
-for char in word.upper():
-    for points in points_per_char.keys():
-        if char in points_per_char[points]:
-            score += points
-            break # Разрывает ближайший цикл, так как буква уже найдена.
-print(f"Слово \"{word}\" стоит {score} очков.")
+word = input('Введите слово: ').upper()
+points=0
+for letter in word:
+    for (k,v) in values_letters.items():
+        if letter in v:
+            points += k
+            break
+print(f"Стоимость слова равна {points}")
