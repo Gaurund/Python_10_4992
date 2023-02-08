@@ -45,8 +45,6 @@ def output():
                                  "Число не может быть отрицательным!")
     first_list = fill_list(first_set_size, 'Заполните первый набор чисел.')
     second_list = fill_list(second_set_size, 'Заполните второй набор чисел.')
-    # first_list = [2, 4, 6, 8, 10, 12, 10, 8, 6, 4, 2]
-    # second_list = [3, 6, 9, 12, 15, 18]
 
     first_set = set(first_list)
     second_set = set(second_list)
