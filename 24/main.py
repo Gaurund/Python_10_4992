@@ -42,13 +42,20 @@ def fill_berries_list(size, msg):
     return new_list
 
 
-def count_best_bushes(berries):
+'''def count_best_bushes(berries):
     size = len(berries)
     max_berries = sum(berries[:3])
     berries = berries + berries[:1]
     for i in range(1, size):
         if max_berries < sum(berries[i:i+3]):
             max_berries = sum(berries[i:i+3])
+    return max_berries'''
+
+def count_best_bushes(berries):
+    max_berries = sum(berries[:3])
+    for i in range(len(berries)):
+        if max_berries < (berries[i] + berries[i-1] +berries[i-2]):
+            max_berries = (berries[i] + berries[i-1] +berries[i-2])
     return max_berries
 
 
