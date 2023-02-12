@@ -8,12 +8,14 @@ Input: 5
 Output: yes 
 '''
 
-def is_simple(num):
-    if num < 4:
+
+def prime(num):
+    if num < 4: # Условие лишнее, потому что если будет 3, то в цикле будет перебираться только деление на 2, а оно выдаст нужный результат.
         return "YES"
-    for i in range(2,num):
+    for i in range(2, num):
         if num % i == 0:
             return "NO"
     return "YES"
 
-print(is_simple(int(input("Input a number: "))))
+
+print(prime(int(input("Input a number: "))))
