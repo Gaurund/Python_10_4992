@@ -18,7 +18,7 @@
 
 
 def letter_filter(letter):
-    return letter in 'уеыаоэяиюУЕЫАОЭЯИЮ'
+    return letter in 'уеыаоэяиюУЕЫАОЭЯИЮeyuioaEYUIOA'
 
 
 def count_syllables(phrase):
