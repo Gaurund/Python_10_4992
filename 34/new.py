@@ -17,12 +17,13 @@
 '''
 
 
+def letter_filter(letter):
+    return letter in 'уеыаоэяиюУЕЫАОЭЯИЮ'
+
+
 def count_syllables(phrase):
-    counter = 0
-    for letter in phrase:
-        if letter in 'уеыаоэяиюУЕЫАОЭЯИЮ':
-            counter += 1
-    return counter
+    return len("".join((filter(letter_filter, phrase))))
+
 
 def output():
     hum = input("Введите бурчалку Винни-Пуха: ")
