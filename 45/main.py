@@ -17,15 +17,15 @@
 '''
 number = int(input("Input: "))
 amicable = {}
-for i in range (1, number + 1):
+for i in range(1, number + 1):
     sum_ = 0
-    for j in range (1, i):
+    for j in range(1, (i//2)+1):
         if i % j == 0:
             sum_ += j
     amicable[i] = sum_
-    if amicable.get(sum_)==i and i != sum_: # Использование метода get гарантирует нас от возникновения ошибки, когда указатель уходит за пределы словаря.
+    # Использование метода get гарантирует нас от возникновения ошибки, когда указатель уходит за пределы словаря.
+    if amicable.get(sum_) == i and i != sum_:
         print(sum_, i)
 
 # file = open("amicable.txt", "a")
 # file.write(str(amicable))
-
