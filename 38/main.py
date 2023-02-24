@@ -21,50 +21,58 @@
 
 
 '''
+from filehandling import *
+from output import *
+from operations import *
 
 
-def what_to_do():
-    '''Запрашиваем что пользователь хочет сделать:
-        просмотреть таблицу,
-        поискать определённый контакт
-        или ввести контакт.'''
-    return 0
 
-
-def create_db_or_load_db():
-    return 0
-
-
-def input_contact():
-    return 0
-
-
-def edit_contact():
-    return 0
-
-
-def search_contact():
-    return 0
-
-
-def print_contact():
-    return 0
-
-
-def print_whole_db():
-    return 0
-
-
-def save_db_file():
-    return 0
-
-
-def load_db_file():
-    return 0
 
 
 def main():
-    ''' 
-    
-    '''
-    return 0
+    db_data_list = load_db_file()
+    choice = input(
+        '\nВыберите вариант: 1. Добавить контакт. 2. Искать контакт. 3. Просмотреть существующий список контактов. Q - завершить работу: ')
+    if choice == '1':
+        contact = input_contact()
+        db_data_list.append(contact)
+    elif choice == '3':
+        print_whole_db(db_data_list)
+    elif choice == '2':
+        found = search_contact(db_data_list)
+        if found != []:
+            print('\nНайдено:')
+            print_whole_db(found)
+            if len(found) > 1:
+                print(
+                    '\nСлишком много совпадений. Повторите поиск, чтобы получить единственный результат.')
+            else:
+                found_choice = input(
+                    '\nЧто вы хотите сделать с найденным?\nВыберите вариант: 1. Отредактировать. 2. Удалить ')
+                if found_choice == '1':
+                    db_data_list = edit_contact(db_data_list, found[0])
+                elif found_choice == '2':
+                    db_data_list = erase_contact(db_data_list, found[0])
+                else:
+                    print('\nОпять чего-то не то нажали. Придётся начинать всё заново.')
+
+        else:
+            print('\nПо данному запросу ничего не найдено. ')
+    elif choice in 'qQйЙ':
+        print('\nЗавершение программы.')
+        global flag
+        flag = False
+    else:
+        print('\nНекорректный ввод. Повторите. ')
+    save_db_file(db_data_list)
+
+    # print(db_data_list)
+    # print(contact)
+    # print_contact(db_data_list[0])
+    # print(db_data_list)
+
+
+flag = True
+
+while flag:
+    main()
