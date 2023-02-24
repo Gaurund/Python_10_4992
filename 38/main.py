@@ -21,28 +21,25 @@
 
 
 '''
-from filehandling import *
-from output import *
-from operations import *
-
-
-
+import filehandling as files
+import output as out
+import operations as ops
 
 
 def main():
-    db_data_list = load_db_file()
+    db_data_list = files.load_db_file()
     choice = input(
         '\nВыберите вариант: 1. Добавить контакт. 2. Искать контакт. 3. Просмотреть существующий список контактов. Q - завершить работу: ')
     if choice == '1':
-        contact = input_contact()
+        contact = ops.input_contact()
         db_data_list.append(contact)
     elif choice == '3':
-        print_whole_db(db_data_list)
+        out.print_whole_db(db_data_list)
     elif choice == '2':
-        found = search_contact(db_data_list)
+        found = ops.search_contact(db_data_list)
         if found != []:
             print('\nНайдено:')
-            print_whole_db(found)
+            out.print_whole_db(found)
             if len(found) > 1:
                 print(
                     '\nСлишком много совпадений. Повторите поиск, чтобы получить единственный результат.')
@@ -50,9 +47,9 @@ def main():
                 found_choice = input(
                     '\nЧто вы хотите сделать с найденным?\nВыберите вариант: 1. Отредактировать. 2. Удалить ')
                 if found_choice == '1':
-                    db_data_list = edit_contact(db_data_list, found[0])
+                    db_data_list = ops.edit_contact(db_data_list, found[0])
                 elif found_choice == '2':
-                    db_data_list = erase_contact(db_data_list, found[0])
+                    db_data_list = ops.erase_contact(db_data_list, found[0])
                 else:
                     print('\nОпять чего-то не то нажали. Придётся начинать всё заново.')
 
@@ -64,12 +61,7 @@ def main():
         flag = False
     else:
         print('\nНекорректный ввод. Повторите. ')
-    save_db_file(db_data_list)
-
-    # print(db_data_list)
-    # print(contact)
-    # print_contact(db_data_list[0])
-    # print(db_data_list)
+    files.save_db_file(db_data_list)
 
 
 flag = True
