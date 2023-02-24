@@ -1,9 +1,9 @@
-from local import *
+import local as l
 
 
 def print_contact(contact):
     for k, v in contact.items():
-        print(LOCAL[k], v)
+        print(l.LOCAL[k], v)
 
 
 def print_whole_db(db_data_list):

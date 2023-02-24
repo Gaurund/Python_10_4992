@@ -24,12 +24,12 @@
 import filehandling as files
 import output as out
 import operations as ops
+import local as l
 
 
 def main():
     db_data_list = files.load_db_file()
-    choice = input(
-        '\nВыберите вариант: 1. Добавить контакт. 2. Искать контакт. 3. Просмотреть существующий список контактов. Q - завершить работу: ')
+    choice = input(l.LOCAL['initial_invitation'])
     if choice == '1':
         contact = ops.input_contact()
         db_data_list.append(contact)
@@ -38,29 +38,27 @@ def main():
     elif choice == '2':
         found = ops.search_contact(db_data_list)
         if found != []:
-            print('\nНайдено:')
+            print(l.LOCAL['found'])
             out.print_whole_db(found)
             if len(found) > 1:
-                print(
-                    '\nСлишком много совпадений. Повторите поиск, чтобы получить единственный результат.')
+                print(l.LOCAL['too_much'])
             else:
-                found_choice = input(
-                    '\nЧто вы хотите сделать с найденным?\nВыберите вариант: 1. Отредактировать. 2. Удалить ')
+                found_choice = input(l.LOCAL['what_next'])
                 if found_choice == '1':
                     db_data_list = ops.edit_contact(db_data_list, found[0])
                 elif found_choice == '2':
                     db_data_list = ops.erase_contact(db_data_list, found[0])
                 else:
-                    print('\nОпять чего-то не то нажали. Придётся начинать всё заново.')
+                    print(l.LOCAL['repeat_it'])
 
         else:
-            print('\nПо данному запросу ничего не найдено. ')
+            print(l.LOCAL['nothing_found'])
     elif choice in 'qQйЙ':
-        print('\nЗавершение программы.')
+        print(l.LOCAL['quit'])
         global flag
         flag = False
     else:
-        print('\nНекорректный ввод. Повторите. ')
+        print(l.LOCAL['wrong_input'])
     files.save_db_file(db_data_list)
 
 
